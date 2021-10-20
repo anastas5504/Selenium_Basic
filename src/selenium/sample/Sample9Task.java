@@ -5,18 +5,21 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.time.Instant;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class Sample9Task {
     WebDriver driver;
+    private static WebDriverWait wait;
+    static long startTime;
 
     @Before
     public void openPage() {
@@ -40,6 +43,24 @@ public class Sample9Task {
 //         * 3) check that both button
 //         * and loading text is not seen,
 //         * success is seen instead "Green Loaded"
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        WebElement loadGreenButton = driver.findElement(By.id("start_green"));
+        loadGreenButton.click();
+
+        assertFalse(loadGreenButton.isDisplayed());
+        WebElement loadingGreenText = driver.findElement(By.id("loading_green"));
+        assertTrue(loadingGreenText.isDisplayed());
+
+        WebElement greenLoaded = driver.findElement(By.id("finish_green"));
+        assertFalse(loadGreenButton.isDisplayed());
+        assertFalse(loadingGreenText.isDisplayed());
+        assertTrue(greenLoaded.isDisplayed());
+
+
+
+
+
     }
 
     @Test
@@ -51,6 +72,9 @@ public class Sample9Task {
 //         * 3) check that both button
 //         * and loading text is not seen,
 //         * success is seen instead "Green Loaded"
+
+        driver.findElement(By.id("start_green")).click();
+        Thread.sleep(2000);
     }
 
     @Test
