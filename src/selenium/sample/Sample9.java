@@ -59,9 +59,7 @@ public class Sample9 {
     public void implicitWaitExample() throws Exception {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        driver.findElement(By.xpath("//*[@id='magic_text']/*[text()=\"What is this magic? It's dev magic~\"]"));
-//        driver.findElement(By.id("asd"));
-        magicTextCheck();
+
     }
 
     @Test

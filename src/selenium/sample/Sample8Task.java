@@ -40,5 +40,18 @@ public class Sample8Task {
 //        check the background of top 2 sections
 //        rgba(255, 221, 221, 1);
 //        check h1 element font-size 64px
+
+        WebElement firstSection = driver.findElement(By.className("w3-pale-red"));
+        assertEquals("rgba(255, 221, 221, 1)", firstSection.getCssValue("background-color"));
+
+        WebElement secondSection = driver.findElement(By.className("w3-pale-yellow"));
+        assertEquals("rgba(255, 255, 204, 1)", secondSection.getCssValue("background-color"));
+
+        WebElement h1 = driver.findElement(By.className("w3-jumbo"));
+        assertEquals("64px", h1.getCssValue("font-size"));
+
+
+
+
     }
 }
